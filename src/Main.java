@@ -8,12 +8,12 @@ public class Main {
 
         System.out.print("Enter birthdate in yyyy-mm-dd form: ");
         LocalDate customerBirthdate = getBirthdate();
-        boolean alcoholAccess = canAlcohol(customerBirthdate);
+        LocalDate eventDate = LocalDate.of(2025,1,15);
+        boolean alcoholAccess = canAlcohol(customerBirthdate,eventDate);
         System.out.println(alcoholAccess);
     }
 
     public static String getName(){
-
         return null;
     }
 
@@ -34,8 +34,8 @@ public class Main {
         return(LocalDate.MAX);
     }
 
-    public static boolean canAlcohol(LocalDate birthdate){
-        LocalDate twentyOneYearsAgo = LocalDate.now().minusYears(21);
+    public static boolean canAlcohol(LocalDate birthdate, LocalDate eventDate){
+        LocalDate twentyOneYearsAgo = eventDate.minusYears(21);
         return birthdate.isBefore(twentyOneYearsAgo);
     }
 }
